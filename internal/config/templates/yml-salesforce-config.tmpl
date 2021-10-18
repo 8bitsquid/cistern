@@ -1,0 +1,35 @@
+{{define "salesforce"}}
+type: salesforce
+url: {{.URL}}
+{{if .API}}
+api_version: 51.0
+{{end}}
+{{if .Auth}}
+auth:
+      {{if .JWT}}
+      jwt:
+            auth_endpoint: {{.AuthEndpoint}}
+            token_endpoint: {{.TokenEndpoint}}
+            private_key: {{.privateKey}}
+            alg: {{.Algorithm}}
+            grant_type: {{.GrantType}}
+            claims:
+                  iss: {{.Issuer}}
+                  sub: {{.Subject}}
+                  aud: {{.Audience}}
+      {{end}}
+      {{if .UserPass}}
+      userpass:
+            user: {{.User}}
+            pass: {{.Pass}}
+            consumer_key: {{.ConsumerKey}}
+            consumner_secret: {{.ConsumnerSecret}}
+      {{end}}
+{{end}}
+{{if .Backups}}
+backups:
+      - api: /jobs/query
+        method: get
+        
+{{end}}
+{{end}}

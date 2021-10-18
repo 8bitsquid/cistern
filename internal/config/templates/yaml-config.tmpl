@@ -1,0 +1,25 @@
+{{if .client}}
+client:
+  {{range .client}}
+    {{.Name}}:
+      type: {{.Type}}
+      url: {{.URL}}
+      {{if eq .Type "salesforce" }}
+      {{template "salesforce"}}
+      {{end}}
+      {{if eq .Type "s3" "S3"}}
+      namespace: {{.Namespace}}
+      user: {{.User}}
+      secret: {{.Secret}}
+    {{end}}
+  {{end}}
+{{end}}
+
+{{if .Loggging}}
+loggging:
+    {{range .Loggging}}
+    level: {{.Level}}
+    encoding: {{.Rncoding}}
+    outputPaths: {{.OutputPaths}}
+    {{end}}
+{{end}}
