@@ -1,3 +1,3 @@
 # Salesforce Backups
 
-App to securely backup salesforce records.
+Securely backup Salesforce records to cloud services using Restic.
